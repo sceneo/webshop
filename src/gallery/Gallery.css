@@ -3,7 +3,12 @@
     vertical-align: center;
 }
 
+.tile {
+    height: 100px;
+    width: 100px;
+}
+
 .picture {
-    height: 300px;
-    width: 10px;
+    height: 25%;
+    width: 25%;
 }

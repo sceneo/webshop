@@ -4,14 +4,13 @@ import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import Dialog from '@material-ui/core/Dialog';
-import {getInstagramFeed, Post} from "../instagram/getInstagram";
+import {getInstagramFeed} from "../instagram/getInstagram";
 import {CircularProgress} from "@material-ui/core";
 import {mapInstagramDataToGallery} from "./GalleryMapper";
 
 export interface GalleryData {
     img: string;
     description: string;
-    subtitle: string;
 }
 
 class Gallery extends Component {
@@ -55,15 +54,13 @@ class Gallery extends Component {
                 :
             <div>
 
-                <GridList>
+                <GridList >
                     {this.state.galleryData.map(tile => (
-                        <GridListTile key={tile.img}>
-                            <img className={"picture"} src={tile.img} alt={"some alt text, maybe the hashtags?"}
+                        <GridListTile className={"tile"}  key={tile.img} >
+                            <img src={tile.img} alt={"some alt text, maybe the hashtags?"}
                                  onClick={() => selectPicture(tile)}/>
                             <GridListTileBar
                                 title={tile.description}
-                                subtitle={<span>{tile.subtitle
-                                }</span>}
                             />
                         </GridListTile>
                     ))}
