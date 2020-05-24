@@ -114,11 +114,10 @@ export default function ImpressumDialog(props: DialogProps) {
                         werden wir derartige Inhalte umgehend entfernen.
 
                                     <h4>Bild und Videomaterial</h4>
-                        Bildmaterial von folgenden Parteien:
+                        Inhalte von folgenden Parteien:
+                        - Bilder von Instagram (Aidali.Handmade)
+                        - Stoffbeispielbilder und Texte von Wikipedia
 
-                        [TODO]
-
-                        Icons from www.freeicons.io
 
                     </Typography>
                 </DialogContent>

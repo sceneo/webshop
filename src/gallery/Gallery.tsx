@@ -1,69 +1,84 @@
-import React from 'react';
-import {Theme, createStyles, makeStyles} from '@material-ui/core/styles';
+import React, {Component} from 'react';
+import './Gallery.css';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import Dialog from '@material-ui/core/Dialog';
 import {getInstagramFeed, Post} from "../instagram/getInstagram";
+import {CircularProgress} from "@material-ui/core";
+import {mapInstagramDataToGallery} from "./GalleryMapper";
 
-const mapInstagramDataToGallery = (post: Post) => ({
-    img: post.url,
-    title: post.caption,
-    author: post.owner,
-})
-const galleryData = [{img:"", title:"",author:""}];
+export interface GalleryData {
+    img: string;
+    description: string;
+    subtitle: string;
+}
 
-//getInstagramFeed().then(feed => feed.map(mapInstagramDataToGallery));
+class Gallery extends Component {
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        root: {
-            display: 'flex',
-            flexWrap: 'wrap',
-            overflow: 'hidden',
-        },
-        gridList: {
-            width: '100%',
-            height: '100%',
-        },
-        icon: {
-            color: 'rgba(255, 255, 255, 0.54)',
-        },
-    }),
-);
-
-
-export default function Gallery() {
-    const classes = useStyles();
-    const [open, setOpen] = React.useState(false);
-    const [selectedValue, setSelectedValue] = React.useState("");
-
-    const selectPicture = (image: string) => {
-        setSelectedValue(image);
-        setOpen(true);
+    state = {
+        showSpinner: true as boolean,
+        galleryData: [] as GalleryData[],
+        isDialogOpen: false as boolean,
+        selectedInstagramItem: undefined as undefined | GalleryData,
     };
 
-    const handleClose = (value: string) => {
-        setOpen(false);
-        setSelectedValue(value);
-    };
 
-    return (
-        <div className={classes.root}>
-            <GridList cellHeight={180} className={classes.gridList}>
-                {galleryData.map(tile => (
-                    <GridListTile key={tile.img}>
-                        <img src={"gallery/"+tile.img} alt={tile.title} onClick={() => selectPicture(tile.img)}/>
+    async componentDidMount() {
+        this.setState({
+            galleryData: (await getInstagramFeed()).map(mapInstagramDataToGallery),
+            showSpinner: false,
+        })
+    }
+
+    render() {
+        const handleClose = () => {
+            this.setState({
+                isDialogOpen: false,
+                selectedInstagramItem: undefined,
+            });
+        }
+
+        const selectPicture = (pic: GalleryData) => {
+            this.setState({
+                isDialogOpen: true,
+                selectedInstagramItem: pic,
+            });
+        }
+
+        return (
+
+            this.state.showSpinner ?
+                <div className={"spinner"}>
+                    <CircularProgress />
+                </div>
+                :
+            <div>
+
+                <GridList>
+                    {this.state.galleryData.map(tile => (
+                        <GridListTile key={tile.img}>
+                            <img className={"picture"} src={tile.img} alt={"some alt text, maybe the hashtags?"}
+                                 onClick={() => selectPicture(tile)}/>
+                            <GridListTileBar
+                                title={tile.description}
+                                subtitle={<span>{tile.subtitle
+                                }</span>}
+                            />
+                        </GridListTile>
+                    ))}
+                </GridList>
+                <Dialog open={this.state.isDialogOpen} onClose={handleClose}>
+                    <GridListTile>
+                        <img src={this.state.selectedInstagramItem?.img} alt={"some alt text, maybe the hashtags?"} onClick={handleClose}/>
                         <GridListTileBar
-                            title={tile.title}
-                            subtitle={<span>{tile.author}</span>}
+                            title={this.state.selectedInstagramItem?.description}
                         />
                     </GridListTile>
-                ))}
-            </GridList>
-            <Dialog open={open} onClose={handleClose}>
-                <img src={"gallery/"+selectedValue} alt={""}/>
-            </Dialog>
-        </div>
-    );
+                </Dialog>
+            </div>
+        );
+    }
 }
+
+export default Gallery;

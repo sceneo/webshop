@@ -1,0 +1,43 @@
+.avatare {
+    background-color: white;
+    width: 180px;
+    height: 180px;
+}
+
+.svgs {
+    height: 130px;
+    width: 130px;
+}
+
+.root {
+    flex-grow: 1;
+}
+
+.title {
+    flex-grow: 1;
+    display: none;
+}
+
+.search {
+    position: relative;
+    background-color: white;
+    margin-left: 50px;
+    width: 100%;
+}
+
+.searchIcon {
+    height: 100%;
+    position: absolute;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inputRoot {
+    color: inherit;
+}
+
+.inputInput {
+    width: 100%;
+}

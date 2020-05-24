@@ -1,0 +1,15 @@
+.header {
+    text-align: left;
+    vertical-align: center;
+    font-size: 30px;
+    font-weight: bold;
+}
+.mainText {
+    text-align: justify;
+    vertical-align: center;
+    display:inline-block;
+}
+.footer {
+    text-align: justify;
+    vertical-align: center;
+}
