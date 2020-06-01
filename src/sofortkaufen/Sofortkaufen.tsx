@@ -1,13 +1,47 @@
-import React from "react";
-import InstagramFeed from "./InstagramFeed";
+import React, {Component} from "react";
+import {Grid, Typography} from "@material-ui/core";
+import {getInstagramFeed} from "../instagram/getInstagram";
+import {mapInstagramDataToDirectBuy, DirectBuy} from "./DirectBuyMapper";
+import DirectBuyComponent from "./DirectBuyComponent";
 
-export default function Sofortkaufen() {
-    return (
-        <div>
-            Hier wird der instagramfeed auftauchen (filter auf irgendein #)
-            Vorschau quadratisch
-            Bei klick dann details? großes bild? woher ziehe ich die details? einfach direkt den insta-feed?
-            <InstagramFeed/>
-        </div>
-    );
+class Sofortkaufen extends Component {
+
+    state = {
+        showSpinner: true as boolean,
+        directBuyData: [] as DirectBuy[],
+    };
+
+
+    async componentDidMount() {
+        this.setState({
+            directBuyData: (await getInstagramFeed()).map(mapInstagramDataToDirectBuy),
+        })
+    }
+
+    render() {
+
+
+        return (
+            <div>
+                <Typography>
+                    Hier kannst du Dinge finden, die ich bereits fertig habe und die sofort verfügbar sind - Wenn weg,
+                    dann weg.
+                </Typography>
+
+                <Grid container>
+                    {this.state.directBuyData.map(direct => (
+                        <Grid item sm={4}>
+                            <DirectBuyComponent img={direct.img} description={direct.description} price={direct.price}
+                                                size={direct.size}/>
+                            <br/>
+                        </Grid>
+                    ))}
+                </Grid>
+
+            </div>
+        )
+            ;
+    }
 }
+
+export default Sofortkaufen;

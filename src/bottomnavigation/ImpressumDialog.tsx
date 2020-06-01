@@ -69,7 +69,8 @@ export default function ImpressumDialog(props: DialogProps) {
                         Verantwortlich für die Inhalte der Webseite: <br/>
                         Aidali Handmade <br/>
                         Annika Klingenberg<br/>
-                            [TODO]
+                        Heitersheimer Str. 9 <br/>
+                        79426 Buggingen <br/>
                         </p>
 
 
@@ -78,7 +79,6 @@ export default function ImpressumDialog(props: DialogProps) {
                         Dr. Tobias Kunz <br/>
                         Ampfingstraße 44 <br/>
                         81671 München <br/>
-                        booking@maennerwirtschaftband.de <br/>
                         </p>
 
                             <h4>Haftung für Inhalte</h4>
@@ -114,9 +114,9 @@ export default function ImpressumDialog(props: DialogProps) {
                         werden wir derartige Inhalte umgehend entfernen.
 
                                     <h4>Bild und Videomaterial</h4>
-                        Inhalte von folgenden Parteien:
-                        - Bilder von Instagram (Aidali.Handmade)
-                        - Stoffbeispielbilder und Texte von Wikipedia
+                        Inhalte von folgenden Parteien: <br/>
+                        - Bilder von Instagram (Aidali.Handmade) <br/>
+                        - Stoffbeispielbilder und Texte von Wikipedia <br/>
 
 
                     </Typography>

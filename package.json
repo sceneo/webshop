@@ -14,6 +14,7 @@
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
     "deploy-aws-s3-cloudfront": "^2.5.0",
+    "gmail-send": "^1.8.10",
     "npm-run-all": "^4.1.5",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",

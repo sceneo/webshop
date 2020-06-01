@@ -1,4 +1,4 @@
-import {hasHashtag} from "../Hashtag";
+import {hasHashtag, removeHashtag} from "../Hashtag";
 import {GalleryData} from "../../gallery/Gallery";
 
 describe("The Hashtag method hasHashtag() ", () => {
@@ -36,5 +36,26 @@ describe("The Hashtag method hasHashtag() ", () => {
             img: "some image",
         }
         expect(hasHashtag(itemWithHashtagNice, hastagToLookFor)).toEqual(false);
+    })
+})
+
+describe("The Hashtag method removeString() ", () => {
+    it("removes all # from string", () => {
+        const stringWithTwoHashtags = "This is a string #with two #hashtags";
+
+        const newString = removeHashtag(stringWithTwoHashtags);
+
+        expect(newString).not.toContain("#");
+    })
+
+    it("cuts string after first appearing # and keeps content before string", () => {
+        const stringBeforeHashtag = "This is the part before";
+        const stringAfterHashtag = "#the hashtag";
+
+        const newString = removeHashtag(stringBeforeHashtag + stringAfterHashtag);
+
+        expect(newString).not.toContain("#");
+        expect(newString).toContain(stringBeforeHashtag);
+        expect(newString).not.toContain(stringAfterHashtag);
     })
 })
