@@ -1,7 +1,9 @@
 import React, {Component} from "react";
 import {Button, Grid, Typography} from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
-import {sendEmail} from "../notification/Notification";
+
+import './Kontakt.css'
+import {assembleContactEmail} from "../notification/Notification";
 
 class Kontakt extends Component {
     state = {
@@ -56,10 +58,14 @@ class Kontakt extends Component {
     };
 
     handleSubmit = () => {
-
-        sendEmail();
+        window.open(assembleContactEmail(this.state.email, this.state.name, this.state.request));
+        this.setState({
+            name: '',
+            email: '',
+            request: '',
+            isButtonDisabled: true,
+        })
     }
-
 
     render() {
         return (
@@ -69,16 +75,17 @@ class Kontakt extends Component {
                 </Typography>
                 <Grid container spacing={1}>
                     <Grid item sm={12}>
-                        <TextField onChange={this.setName} id="filled-basic-Name" label="Name"
+                        <TextField className={'contactLine'} onChange={this.setName} id="filled-basic-Name" label="Name"
                                    placeholder="Vorname Nachname" variant="filled"/>
                     </Grid>
                     <Grid item sm={12}>
-                        <TextField onChange={this.setEmail} id="filled-basic-Email" label="Email"
+                        <TextField className={'contactLine'} onChange={this.setEmail} id="filled-basic-Email" label="Email"
                                    placeholder="Max@Mustermann.de"
                                    variant="filled"/>
                     </Grid>
                     <Grid item sm={12}>
                         <TextField
+                            className={'contactLine'}
                             onChange={this.setRequest}
                             id="filled-textarea"
                             label="Ihre Anfrage"
@@ -90,10 +97,17 @@ class Kontakt extends Component {
                     </Grid>
                     <Grid item sm={12}>
                         <Button onClick={this.handleSubmit} color="primary" disabled={this.state.isButtonDisabled}>
-                            Anfrage abschicken
+                            Anfrage erstellen
                         </Button>
                     </Grid>
                 </Grid>
+                <Typography>
+                    <br/>
+                    <br/>
+                    <br/>
+                    Aus rechtlichen Gründen (DSGVO) stellen wir lediglich eine Email für dich zusammen - der Versand
+                    erfolgt dann wie gewohnt über dein Mailprogramm.
+                </Typography>
             </div>
         );
     }

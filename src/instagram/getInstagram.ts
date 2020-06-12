@@ -1,4 +1,3 @@
-import React from 'react';
 import {getInstagramContentLink, getInstagramStoffeLink} from "./Constants";
 
 export interface Post {

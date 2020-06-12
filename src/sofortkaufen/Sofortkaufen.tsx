@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {Grid, Typography} from "@material-ui/core";
 import {getInstagramFeed} from "../instagram/getInstagram";
 import {mapInstagramDataToDirectBuy, DirectBuy} from "./DirectBuyMapper";
-import DirectBuyComponent from "./DirectBuyComponent";
+import DirectBuyComponent from "../components/DirectBuyComponent";
 
 class Sofortkaufen extends Component {
 

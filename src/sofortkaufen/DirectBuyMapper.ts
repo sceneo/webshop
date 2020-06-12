@@ -1,4 +1,5 @@
 import {Post} from "../instagram/getInstagram";
+import {hasHashtagInPost, removeHashtag, getPriceFromHashtag, getSizeFromHashtag} from "../utils/Hashtag";
 
 export interface DirectBuy {
     img: string;
@@ -7,9 +8,13 @@ export interface DirectBuy {
     size: string;
 }
 
+export const isDirectBuy = (post: Post): boolean => {
+    return hasHashtagInPost(post, "#sofortkauf")
+}
+
 export const mapInstagramDataToDirectBuy = (post: Post): DirectBuy => ({
     img: post.url,
-    description: post.caption, // TODO: remove #tags
-    price: "27 EUR", // TODO
-    size: "154", // TODO
+    description: removeHashtag(post.caption),
+    price: getPriceFromHashtag(post.caption),
+    size: getSizeFromHashtag(post.caption),
 })

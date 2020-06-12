@@ -1,4 +1,4 @@
-import {hasHashtag, removeHashtag} from "../Hashtag";
+import {getPriceFromHashtag, getSizeFromHashtag, hasHashtag, removeHashtag} from "../Hashtag";
 import {GalleryData} from "../../gallery/Gallery";
 
 describe("The Hashtag method hasHashtag() ", () => {
@@ -57,5 +57,57 @@ describe("The Hashtag method removeString() ", () => {
         expect(newString).not.toContain("#");
         expect(newString).toContain(stringBeforeHashtag);
         expect(newString).not.toContain(stringAfterHashtag);
+    })
+})
+
+describe("The Hashtag method getPriceFromString() ", () => {
+    it("can get the correct price from a string", () => {
+        const stringWithPrice = "This is a string with #preis=120 #someOther";
+
+        const newString = getPriceFromHashtag(stringWithPrice);
+
+        expect(newString).toEqual("120 EUR");
+    })
+
+    it("can get the correct price from a string at the end of the object", () => {
+        const stringWithPrice = "This is a string with #preis=120";
+
+        const newString = getPriceFromHashtag(stringWithPrice);
+
+        expect(newString).toEqual("120 EUR");
+    })
+
+    it("returns _Kein Preis verfügbar_ if no price is listed", () => {
+        const stringWithPrice = "This is a string with #preis= #test";
+
+        const newString = getPriceFromHashtag(stringWithPrice);
+
+        expect(newString).toEqual("Kein Preis verfügbar");
+    })
+
+    it("returns _Kein Preis verfügbar_ if no valid tag exists", () => {
+        const stringWithPrice = "This is a string with #test";
+
+        const newString = getPriceFromHashtag(stringWithPrice);
+
+        expect(newString).toEqual("Kein Preis verfügbar");
+    })
+})
+
+describe("The Hashtag method getSizeFromString() ", () => {
+    it("can get the correct size from a string as number", () => {
+        const stringWithPrice = "This is a string with #größe=156 #someOther";
+
+        const newString = getSizeFromHashtag(stringWithPrice);
+
+        expect(newString).toEqual("156 ");
+    })
+
+    it("can get the correct size from a string as string", () => {
+        const stringWithPrice = "This is a string with #größe=XL #someOther";
+
+        const newString = getSizeFromHashtag(stringWithPrice);
+
+        expect(newString).toEqual("XL ");
     })
 })

@@ -1,7 +1,7 @@
 .avatare {
-    background-color: white;
-    width: 180px;
-    height: 180px;
+    width: 250px;
+    height: 50px;
+    background-color: gray !important;
 }
 
 .svgs {
@@ -22,7 +22,7 @@
     position: relative;
     background-color: white;
     margin-left: 50px;
-    width: 100%;
+    width: 25%;
 }
 
 .searchIcon {
@@ -40,4 +40,8 @@
 
 .inputInput {
     width: 100%;
+}
+
+.appBar {
+    background-color: lightgray !important
 }

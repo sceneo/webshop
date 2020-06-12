@@ -1,18 +1,23 @@
 
 
-const send = require('gmail-send')({
-    user: 'TobiasKunz1987@gmail.com',
-    pass: 'Cod4ibaH3.',
-    to:   'kunztobias@gmx.de',
-    subject: 'test subject',
-});
 
 
-export const sendEmail = (): void => {
-    send({
-        text:    'gmail-send example 1',
-    }, (error: any, result: any, fullResult: any) => {
-        if (error) console.error(error);
-        console.log(result);
-    });
-};
+export const assembleContactEmail = (email: string, name: string, request:string): string => {
+    const SUBJECT = "Kontaktaufname via Aidali Webpage";
+    const CONTACT = "HIER_SOLLTE_DANN_ANNIKAS@EMAIL_STEHEN.COM";
+    let newDate = new Date(Date.now());
+
+    return 'mailto:'+CONTACT+'?subject='+SUBJECT+'&body='+request+'<br/><br/><br/>Von: '+name+'('+email+')<br/>Uhrzeit: '
+        + newDate.toLocaleDateString() + ' ' + newDate.toLocaleTimeString();
+
+}
+
+export const assembleWishlistEmail = (email: string, name: string, request:string): string => {
+    const SUBJECT = "Kontaktaufname via Aidali Webpage";
+    const CONTACT = "HIER_SOLLTE_DANN_ANNIKAS@EMAIL_STEHEN.COM";
+    let newDate = new Date(Date.now());
+
+    return 'mailto:'+CONTACT+'?subject='+SUBJECT+'&body='+request+'<br/><br/><br/>Von: '+name+'('+email+')<br/>Uhrzeit: '
+        + newDate.toLocaleDateString() + ' ' + newDate.toLocaleTimeString();
+
+}
