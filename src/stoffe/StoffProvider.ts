@@ -1,5 +1,3 @@
-import {GalleryData} from "../gallery/Gallery";
-
 export interface Stoff {
     img: string;
     art: string;

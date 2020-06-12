@@ -25,7 +25,6 @@ const getPostsFromInstagram = async (link: string) => {
 const mapPosts = (edge: any): Post[] => {
     let posts: Post[] = [];
     let counter = 0;
-    console.log(edge.edges);
     edge.edges.forEach((nodes: any) => {
         posts[counter] = {
             isVideo: nodes.node.is_video,

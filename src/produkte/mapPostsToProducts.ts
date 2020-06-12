@@ -3,7 +3,6 @@ import {ProductCategory} from "./ProductCategory";
 import {
     getAllHashtagsFromString,
     getProductCategoryFromCaption,
-    hasProductCategory,
     removeHashtag
 } from "../utils/Hashtag";
 
@@ -15,7 +14,7 @@ export interface Product {
 }
 
 export const mapPostsToProducts = (posts: Post[]): Product[]  => {
-    return posts.filter(post => !post.isVideo).filter(post => hasProductCategory(post.caption)).map(post => {
+    return posts.filter(post => !post.isVideo).map(post => {
         return {
             category: getProductCategoryFromCaption(post.caption),
             description: removeHashtag(post.caption),

@@ -1,15 +1,14 @@
 import React, {Component} from "react";
 import {
-    Avatar,
     Button, Checkbox,
     FormControl,
     InputLabel,
     List,
     ListItem,
-    ListItemAvatar, ListItemSecondaryAction, ListItemText,
+    ListItemSecondaryAction, ListItemText,
     MenuItem,
     Select,
-    Typography, withStyles
+    Typography
 } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import {assembleWishlistEmail} from "../notification/Notification";
@@ -177,30 +176,29 @@ class Wunschzettel extends Component {
     }
 
     getIconByColor = (value: string) => {
-        if(value === 'red'){
-            return <StopIcon style={{ color: red[500] }} />
+        if (value === 'red') {
+            return <StopIcon style={{color: red[500]}}/>
         }
-        if(value === 'yellow'){
-            return <StopIcon style={{ color: yellow[500] }} />
+        if (value === 'yellow') {
+            return <StopIcon style={{color: yellow[500]}}/>
         }
-        if(value === 'green'){
-            return <StopIcon style={{ color: green[500] }} />
+        if (value === 'green') {
+            return <StopIcon style={{color: green[500]}}/>
         }
-        if(value === 'blue'){
-            return <StopIcon style={{ color: blue[500] }} />
-        }
-
-        if(value === 'black'){
-            return <StopIcon style={{ color: "black" }} />
-        }
-        if(value === 'brown'){
-            return <StopIcon style={{ color: brown[500] }} />
+        if (value === 'blue') {
+            return <StopIcon style={{color: blue[500]}}/>
         }
 
+        if (value === 'black') {
+            return <StopIcon style={{color: "black"}}/>
+        }
+        if (value === 'brown') {
+            return <StopIcon style={{color: brown[500]}}/>
+        }
 
 
         // default
-        return <StopIcon style={{ color: grey[500] }} />
+        return <StopIcon style={{color: grey[500]}}/>
     }
 
 
@@ -384,17 +382,18 @@ class Wunschzettel extends Component {
 
             {Object.keys(Colors).map(value => {
                 return (
-                    <ListItem button onClick={this.handleToggle(value)}>
-                        {this.getIconByColor(value)}
-                        <ListItemText primary={getColorFromString(value)} onChange={this.handleToggle(value)}/>
-                        <ListItemSecondaryAction>
-                            <Checkbox
-                                edge="end"
-                                onChange={this.handleToggle(value)}
-                                checked={this.isColorChecked(value)}
-                            />
-                        </ListItemSecondaryAction>
-                    </ListItem>
+                    <FormControl className={'wishlistDropdown'} variant="filled">
+                        <ListItem className={'wishlistColor'} button onClick={this.handleToggle(value)}>
+                            {this.getIconByColor(value)}
+                            <ListItemText primary={getColorFromString(value)} onChange={this.handleToggle(value)}/>
+                            <ListItemSecondaryAction>
+                                <Checkbox
+                                    onChange={this.handleToggle(value)}
+                                    checked={this.isColorChecked(value)}
+                                />
+                            </ListItemSecondaryAction>
+                        </ListItem>
+                    </FormControl>
                 );
             })}
         </List>
