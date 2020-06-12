@@ -8,6 +8,7 @@ export interface Stoff {
 }
 
 // TODO: replace by example pics & correct text
+// Remember to adjust also the impressum where the source is mentionned
 export const stoffe: Stoff[] = [
     {
         img: "jersey.jpg",
