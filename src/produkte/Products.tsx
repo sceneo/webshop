@@ -6,11 +6,12 @@ import {ProductCategory} from "./ProductCategory";
 import {getInstagramFeed} from "../instagram/getInstagram";
 import {mapPostsToProducts, Product} from "./mapPostsToProducts";
 import {filterProducts} from "./filterProducts";
-import {returnEmptyProductIfUndefined} from "../utils/Undefined";
+import {isUndefined, returnEmptyProductIfUndefined} from "../utils/Undefined";
 
 class Products extends Component {
     state = {
         productSelection: undefined as ProductCategory | undefined,
+        allData: undefined as Product[] | undefined,
         babyData: undefined as Product[] | undefined,
         adultData: undefined as Product[] | undefined,
         childData: undefined as Product[] | undefined
@@ -23,9 +24,9 @@ class Products extends Component {
     }
 
     selectProductsToShow = (): Product[] => {
-        switch(this.state.productSelection){
+        switch (this.state.productSelection) {
             case undefined:
-                return [];
+                return returnEmptyProductIfUndefined(this.state.allData);
             case ProductCategory.baby:
                 return returnEmptyProductIfUndefined(this.state.babyData);
             case ProductCategory.child:
@@ -38,8 +39,9 @@ class Products extends Component {
     }
 
     async componentDidMount() {
-        const products : Product[] = await getInstagramFeed().then(mapPostsToProducts);
+        const products: Product[] = await getInstagramFeed().then(mapPostsToProducts);
         this.setState({
+            allData: await getInstagramFeed().then(mapPostsToProducts),
             babyData: filterProducts(products, ProductCategory.baby),
             adultData: filterProducts(products, ProductCategory.adult),
             childData: filterProducts(products, ProductCategory.child),
@@ -48,10 +50,10 @@ class Products extends Component {
 
     render() {
         return (
-                <div>
-                    <CategorySelector setSelectionType={this.setSelectedCategory}/>
-                    <CategoryDisplay productsToShow={this.selectProductsToShow()}/>
-                </div>
+            <div>
+                <CategorySelector setSelectionType={this.setSelectedCategory}/>
+                <CategoryDisplay productsToShow={this.selectProductsToShow()}/>
+            </div>
         )
     };
 }

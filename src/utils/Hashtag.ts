@@ -16,10 +16,6 @@ export const removeHashtag = (input: string): string => {
     return input.substring(0, input.indexOf('#'));
 }
 
-export const getAllHashtagsFromString = (input: string): string[] => {
-    return []; // FIXME
-}
-
 export const hasProductCategory = (input: string): boolean => {
     return hasHashtagInString(input, "#baby") || hasHashtagInString(input, "#child") || hasHashtagInString(input, "#adult");
 }
@@ -75,6 +71,15 @@ export const getSizeFromHashtag = (input: string): string => {
     else {
         return stringWithoutIdentifier;
     }
+}
+
+export const getAllHashtagsFromString = (input: string): string[] => {
+    const array = input.match(/#\w+/g);
+    let allHashtags: string[] = [];
+    if(array !== null) {
+        array.forEach(entry => allHashtags.push(entry))
+    }
+    return allHashtags;
 }
 
 const hasHashtagInString = (input: string, hashtag: string): boolean => {

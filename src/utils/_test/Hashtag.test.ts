@@ -1,4 +1,4 @@
-import {getPriceFromHashtag, getSizeFromHashtag, hasHashtag, removeHashtag} from "../Hashtag";
+import {getAllHashtagsFromString, getPriceFromHashtag, getSizeFromHashtag, hasHashtag, removeHashtag} from "../Hashtag";
 import {GalleryData} from "../../gallery/Gallery";
 
 describe("The Hashtag method hasHashtag() ", () => {
@@ -111,3 +111,40 @@ describe("The Hashtag method getSizeFromString() ", () => {
         expect(newString).toEqual("XL ");
     })
 })
+
+describe("The Hashtag method getHashtagsFromString() ", () => {
+    it(" returns empty array if no hashtags are present", () => {
+        const caption = "This is a caption";
+
+        const loadedHashtags = getAllHashtagsFromString(caption);
+
+        expect(loadedHashtags).toEqual([]);
+
+    });
+
+    it(" returns a single result if one hashtag is handed in", () => {
+        const caption = "This is a caption with one #entry";
+
+        const loadedHashtags = getAllHashtagsFromString(caption);
+
+        expect(loadedHashtags.length).toEqual(1);
+        expect(loadedHashtags).toEqual(["#entry"]);
+    });
+
+    it(" can handle multi results", () => {
+        const caption = "This is a caption with one #entry #two or #three";
+
+        const loadedHashtags = getAllHashtagsFromString(caption);
+
+        expect(loadedHashtags.length).toEqual(3);
+        expect(loadedHashtags).toEqual(["#entry", "#two", "#three"]);
+    });
+
+    it(" can handle parameters", () => {
+        const caption = "This is a caption with one #entry=parameter #or #so";
+
+        const loadedHashtags = getAllHashtagsFromString(caption);
+
+        expect(loadedHashtags.length).toEqual(3);
+    });
+});
