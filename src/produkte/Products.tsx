@@ -16,7 +16,9 @@ class Products extends Component {
         allData: undefined as Product[] | undefined,
         babyData: undefined as Product[] | undefined,
         adultData: undefined as Product[] | undefined,
-        childData: undefined as Product[] | undefined
+        childData: undefined as Product[] | undefined,
+        searchFilter: "" as string,
+        applySearch: true as boolean,
     };
 
     setSelectedCategory = (newCategory: ProductCategory | undefined) => {
@@ -26,6 +28,17 @@ class Products extends Component {
     }
 
     selectProductsToShow = (): Product[] => {
+        if(this.state.applySearch) {
+            return this.selectProductsBySelection();
+        }
+        else {
+            return this.selectProductsBySelection().filter(products => {
+                return products.hashtags.includes(this.state.searchFilter)
+            })
+        }
+    }
+
+    selectProductsBySelection = (): Product[] => {
         switch (this.state.productSelection) {
             case undefined:
                 return returnEmptyProductIfUndefined(this.state.allData);
@@ -40,13 +53,25 @@ class Products extends Component {
         }
     }
 
+    setSearchFilter = (searchFilter: string) => {
+        this.setState({
+            searchFilter: searchFilter
+        })
+    }
+
+    applySearch = () => {
+        this.setState({
+            applySearch: !this.state.applySearch
+        })
+    }
+
     async componentDidMount() {
         const products: Product[] = await getInstagramFeed().then(mapPostsToProducts);
         this.setState({
             allData: products,
             babyData: filterProducts(products, ProductCategory.baby),
-            adultData: filterProducts(products, ProductCategory.adult),
             childData: filterProducts(products, ProductCategory.child),
+            adultData: filterProducts(products, ProductCategory.adult),
             showSpinner: false,
         })
     }
@@ -55,7 +80,7 @@ class Products extends Component {
         return (
 
             <div>
-                <CategorySelector setSelectionType={this.setSelectedCategory}/>
+                <CategorySelector applySearch={this.applySearch} setSelectionType={this.setSelectedCategory} setSearchFilter={this.setSearchFilter}/>
 
                 {this.state.showSpinner ?
                     <div className={"spinner"}>

@@ -5,7 +5,6 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import {CardActions, Collapse, IconButton} from "@material-ui/core";
 import clsx from 'clsx';
-import {red} from "@material-ui/core/colors";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import {GalleryData} from "../gallery/Gallery";
 import {Stoff} from "./StoffProvider";
@@ -15,6 +14,7 @@ import GridListTile from "@material-ui/core/GridListTile";
 import GridListTileBar from "@material-ui/core/GridListTileBar";
 import {checkGalleryDataNotUndefined} from "../utils/NullChecker";
 import Dialog from "@material-ui/core/Dialog";
+import '../design/Background.css';
 
 interface StoffComponentProps {
     stoff: Stoff;
@@ -23,13 +23,6 @@ interface StoffComponentProps {
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
-        root: {
-            maxWidth: 345,
-        },
-        media: {
-            height: 0,
-            paddingTop: '56.25%', // 16:9
-        },
         expand: {
             transform: 'rotate(0deg)',
             marginLeft: 'auto',
@@ -39,9 +32,6 @@ const useStyles = makeStyles((theme: Theme) =>
         },
         expandOpen: {
             transform: 'rotate(180deg)',
-        },
-        avatar: {
-            backgroundColor: red[500],
         },
     }),
 );
@@ -65,7 +55,7 @@ export default function StoffComponent(props: StoffComponentProps) {
     }
 
     return (
-        <div>
+        <div >
             <Dialog open={dialogOpen} onClose={closeDialog}>
                 <Typography variant="h6" component="h3">
                     {props.stoff.art}
@@ -74,15 +64,15 @@ export default function StoffComponent(props: StoffComponentProps) {
                     {props.stoff.description}
                 </Typography>
             </Dialog>
-            <Card className={classes.root} variant="outlined">
-                <CardContent>
+            <Card className={'cardBackground'}>
+                <CardContent className={'cardBackground'}>
                     <Typography variant="h6" component="h3">
                         {props.stoff.art}
                     </Typography>
                     <img height="150" width="150" src={"stoffe/" + props.stoff.img} alt="Material" onClick={openDialog}/>
 
                 </CardContent>
-                <CardActions disableSpacing>
+                <CardActions disableSpacing className={'cardBackground'}>
                     Verfügbare Varianten
                     <IconButton
                         className={clsx(classes.expand, {
@@ -96,7 +86,7 @@ export default function StoffComponent(props: StoffComponentProps) {
                     </IconButton>
                 </CardActions>
                 <Collapse in={expanded} timeout="auto" unmountOnExit>
-                    <CardContent>
+                    <CardContent className={'cardBackground'} >
                         {isUndefined(props.images)
                             ?
                             <Typography component="h6">

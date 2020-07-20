@@ -16,11 +16,10 @@ class CategoryDisplay extends Component<CategorySelectorProps, CategorySelectorS
     render() {
         return (
             <div className={"root"}>
-                <Grid container>
+                <Grid container spacing={1}>
                     {this.props.productsToShow.map(product => (
-                        <Grid item sm={4}>
+                        <Grid key={product.description} item sm={4}>
                             <ProductComponent img={product.url} description={product.description}/>
-                            <br/>
                         </Grid>
                     ))}
                 </Grid>

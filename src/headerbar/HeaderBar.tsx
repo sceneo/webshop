@@ -31,7 +31,7 @@ export default function HeaderBar() {
                 <Grid item sm={5}>
                     <Container color={'white'}>
                         <IconButton color={'primary'} onClick={clickBackToHome} aria-label="Zurück zur Hauptseite">
-                            <HomeIcon/>
+                            <HomeIcon htmlColor={'gray'}/>
                         </IconButton>
                     </Container>
                 </Grid>
@@ -40,17 +40,17 @@ export default function HeaderBar() {
                 </Grid>
                 <Grid item>
                     <IconButton color="secondary" onClick={clickInstagram} aria-label="Instagram">
-                        <InstagramIcon htmlColor={'blue'}/>
+                        <InstagramIcon htmlColor={'gray'}/>
                     </IconButton>
                 </Grid>
                 <Grid item>
                     <IconButton color="secondary" onClick={clickFacebook} aria-label="Facebook">
-                        <FacebookIcon htmlColor={'blue'}/>
+                        <FacebookIcon htmlColor={'gray'}/>
                     </IconButton>
                 </Grid>
                 <Grid item>
                     <IconButton color="secondary" onClick={clickEmail} aria-label="Email">
-                        <EmailIcon htmlColor={'blue'}/>
+                        <EmailIcon htmlColor={'gray'}/>
                     </IconButton>
                 </Grid>
             </Grid>

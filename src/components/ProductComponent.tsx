@@ -3,7 +3,6 @@ import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import {createStyles, makeStyles, Theme} from "@material-ui/core/styles";
-import {removeHashtag} from "../utils/Hashtag";
 
 
 interface ProductComponentProps {
@@ -55,13 +54,12 @@ export default function ProductComponent(props: ProductComponentProps) {
 
     return (
         <div>
-
             <Card className={classes.root} variant="outlined">
                 <CardContent>
                     <img className={classes.frame} src={"content/PolaroidFrame.png"} alt={"Frame"}/>
                     <img className={classes.picture} src={props.img} alt={"Product"}/>
                     <Typography className={classes.description}>
-                        {removeHashtag(props.description)}
+                        {props.description}
                     </Typography>
                 </CardContent>
             </Card>

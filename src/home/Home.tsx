@@ -1,6 +1,7 @@
 import React from "react";
 import {Grid} from "@material-ui/core";
 import './Home.css'
+import '../design/Background.css'
 
 export default function Home() {
     return (

@@ -17,6 +17,7 @@ import {Colors, getColorFromString, getColorIdFromString} from "./Colors";
 import StopIcon from '@material-ui/icons/Stop';
 import {blue, brown, green, grey, red, yellow} from "@material-ui/core/colors";
 
+
 class Wunschzettel extends Component {
     state = {
         name: undefined as string | undefined,

@@ -29,8 +29,12 @@ export const getProductCategoryFromCaption = (input: string): ProductCategory =>
         return ProductCategory.child
     }
 
+    if(hasHashtagInString(input,"#adult")){
+        return ProductCategory.baby
+    }
+
     // default
-    return ProductCategory.adult;
+    return ProductCategory.dog;
 }
 
 

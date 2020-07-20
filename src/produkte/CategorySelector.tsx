@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 
-import {AppBar} from "@material-ui/core";
+import {AppBar, Grid} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import ChildCareIcon from '@material-ui/icons/ChildCare';
 import ChildFriendlyIcon from '@material-ui/icons/ChildFriendly';
@@ -13,36 +13,37 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import SearchIcon from "@material-ui/icons/Search";
 import InputBase from "@material-ui/core/InputBase";
 import "./Products.css"
-
-type SelectionTypes = "none" | "adult" | "child" | "baby";
+import {grey} from "@material-ui/core/colors";
 
 interface CategorySelectorState {
-    adultButton: "default" | "inherit" | "primary" | "secondary" | undefined;
-    childButton: "default" | "inherit" | "primary" | "secondary" | undefined;
-    babyButton: "default" | "inherit" | "primary" | "secondary" | undefined;
+    adultButton: "buttonInactive" | "buttonActive" | undefined,
+    childButton: "buttonInactive" | "buttonActive" | undefined,
+    babyButton: "buttonInactive" | "buttonActive" | undefined,
     currentSelection: ProductCategory | undefined;
 }
 
 interface CategorySelectorProps {
     setSelectionType: (pc: ProductCategory | undefined) => void;
+    setSearchFilter: (searchFilter: string) => void;
+    applySearch: () => void;
 }
 
 const initialState = {
-    adultButton: "primary" as "default" | "inherit" | "primary" | "secondary" | undefined,
-    childButton: "primary" as "default" | "inherit" | "primary" | "secondary" | undefined,
-    babyButton: "primary" as "default" | "inherit" | "primary" | "secondary" | undefined,
-    currentSelection: undefined
+    adultButton: "buttonInactive" as "buttonInactive" | "buttonActive" | undefined,
+    childButton: "buttonInactive" as "buttonInactive" | "buttonActive" | undefined,
+    babyButton: "buttonInactive" as "buttonInactive" | "buttonActive" | undefined,
+    currentSelection: undefined,
+    search: "" as string,
 }
 
 class CategorySelector extends Component<CategorySelectorProps, CategorySelectorState> {
 
     state = initialState;
-
     handleClick = (cat: ProductCategory): void => {
         this.setState({
             ...initialState,
         })
-        const selectedColor = "secondary";
+        const selectedColor = "buttonActive";
         switch (cat) {
             case ProductCategory.adult:
                 this.setState({
@@ -73,64 +74,74 @@ class CategorySelector extends Component<CategorySelectorProps, CategorySelector
         this.props.setSelectionType(undefined);
     }
 
+    handleSearchInput = (input: any) => {
+
+    }
 
     render() {
         return (
             <div>
                 <AppBar className={'appBar'}>
                     <Toolbar>
-                        {this.state.currentSelection === undefined ? <></>:
-                            <IconButton
-                                edge="start"
-                                className={"menuButton"}
-                                color="inherit"
-                                aria-label="open drawer"
-                                onClick={this.handleClickOnBackArrow}
-                            >
-                                <ArrowBackIcon />
-                            </IconButton>
-                        }
-                        <Button
-                            variant="contained"
-                            color={this.state.adultButton}
-                            startIcon={<AccessibilityIcon className={"svgs"}/>}
-                            className={"avatare"}
-                            onClick={() => this.handleClick(ProductCategory.adult)}
-                        >
-                            Erwachsene
-                        </Button>
-                        <Button
-                            variant="contained"
-                            color={this.state.childButton}
-                            startIcon={<ChildCareIcon className={"svgs"}/>}
-                            className={"avatare"}
-                            onClick={() => this.handleClick(ProductCategory.child)}
-                        >
-                            Kind
-                        </Button>
-                        <Button
-                            variant="contained"
-                            color={this.state.babyButton}
-                            startIcon={<ChildFriendlyIcon className={"svgs"}/>}
-                            className={"avatare"}
-                            onClick={() => this.handleClick(ProductCategory.baby)}
-                        >
-                            Baby
-                        </Button>
-
-                        <div className={"search"}>
-                            <div className={"searchIcon"}>
-                                <SearchIcon/>
-                            </div>
-                            <InputBase
-                                placeholder="Suche nach #Hashtag"
-                                classes={{
-                                    root: "inputRoot",
-                                    input: "inputInput",
-                                }}
-                                inputProps={{'aria-label': 'search'}}
-                            />
-                        </div>
+                        <Grid container spacing={1}>
+                            <Grid item>
+                                {this.state.currentSelection === undefined ? <></> :
+                                    <IconButton
+                                        edge="start"
+                                        className={"menuButton"}
+                                        color="inherit"
+                                        aria-label="open drawer"
+                                        onClick={this.handleClickOnBackArrow}
+                                    >
+                                        <ArrowBackIcon style={{color: grey[500]}}/>
+                                    </IconButton>
+                                }
+                            </Grid>
+                            <Grid item>
+                                <Button
+                                    variant="contained"
+                                    startIcon={<AccessibilityIcon className={"svgs"}/>}
+                                    className={this.state.adultButton}
+                                    onClick={() => this.handleClick(ProductCategory.adult)}
+                                >
+                                    Erwachsene
+                                </Button>
+                            </Grid>
+                            <Grid item>
+                                <Button
+                                    variant="contained"
+                                    startIcon={<ChildCareIcon className={"svgs"}/>}
+                                    className={this.state.childButton}
+                                    onClick={() => this.handleClick(ProductCategory.child)}
+                                >
+                                    Kind
+                                </Button>
+                            </Grid>
+                            <Grid item>
+                                <Button
+                                    variant="contained"
+                                    startIcon={<ChildFriendlyIcon className={"svgs"}/>}
+                                    className={this.state.babyButton}
+                                    onClick={() => this.handleClick(ProductCategory.baby)}
+                                >
+                                    Baby
+                                </Button>
+                            </Grid>
+                            <Grid item>
+                                <div className={"search"}>
+                                    <InputBase
+                                        placeholder=" Suche nach #Hashtag"
+                                        classes={{
+                                            root: "inputRoot",
+                                            input: "inputInput",
+                                        }}
+                                        inputProps={{'aria-label': 'search'}}
+                                        onChange={this.handleSearchInput}
+                                    />
+                                    <SearchIcon style={{color: grey[500]}} onClick={this.props.applySearch}/>
+                                </div>
+                            </Grid>
+                        </Grid>
                     </Toolbar>
                 </AppBar>
             </div>
