@@ -10,17 +10,11 @@
     background: rgb(255, 255, 255, 0.1)
 }
 
-.cardBackground {
-    background-color: rgba(255,255,255,0.5);
-}
-
-.directBuyBackground {
-    background-color: rgba(255,255,255,0.5);
-}
-
-
-.backgroundDirectBuy {
-    position: 'relative';
-    top: -300px;
-    background-color: rgba(255,255,255,0.5);
+.polaroid {
+    width: 50%;
+    min-width: 250px;
+    max-width: 400px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
