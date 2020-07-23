@@ -1,5 +1,5 @@
 import {checkGalleryDataNotUndefined} from "../NullChecker";
-import {GalleryData} from "../../gallery/Gallery";
+import {GalleryData} from "../../galery/Galery";
 
 describe("Check GalleryData ", () => {
     it("checkGalleryDataNotUndefined() returns [] when input is undefined", () => {

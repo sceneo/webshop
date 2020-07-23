@@ -1,4 +1,4 @@
-import {GalleryData} from "../gallery/Gallery";
+import {GalleryData} from "../galery/Galery";
 
 import {ProductCategory} from "../produkte/ProductCategory";
 import {Post} from "../instagram/getInstagram";

@@ -6,15 +6,16 @@ import Typography from '@material-ui/core/Typography';
 import {CardActions, Collapse, IconButton} from "@material-ui/core";
 import clsx from 'clsx';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import {GalleryData} from "../gallery/Gallery";
+import {GalleryData} from "../galery/Galery";
 import {Stoff} from "./StoffProvider";
 import {isUndefined} from "../utils/Undefined";
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
-import GridListTileBar from "@material-ui/core/GridListTileBar";
 import {checkGalleryDataNotUndefined} from "../utils/NullChecker";
 import Dialog from "@material-ui/core/Dialog";
 import '../design/Background.css';
+import {getFirstImageOrImageNotFound} from "./StoffSelector";
+import '../design/Images.css'
 
 interface StoffComponentProps {
     stoff: Stoff;
@@ -66,11 +67,10 @@ export default function StoffComponent(props: StoffComponentProps) {
             </Dialog>
             <Card className={'cardBackground'}>
                 <CardContent className={'cardBackground'}>
-                    <Typography variant="h6" component="h3">
+                    <img className={'stoffe'} src={getFirstImageOrImageNotFound(props.images)} alt="Material" onClick={openDialog}/>
+                    <Typography variant="h5" component="h3">
                         {props.stoff.art}
                     </Typography>
-                    <img height="150" width="150" src={"stoffe/" + props.stoff.img} alt="Material" onClick={openDialog}/>
-
                 </CardContent>
                 <CardActions disableSpacing className={'cardBackground'}>
                     Verfügbare Varianten
@@ -101,10 +101,6 @@ export default function StoffComponent(props: StoffComponentProps) {
                                     {checkGalleryDataNotUndefined(props.images).map(tile => (
                                         <GridListTile key={tile.img}>
                                             <img className={"picture"} src={tile.img} alt={props.stoff.hashtag}/>
-                                            <GridListTileBar
-                                                title={tile.description}
-                                                subtitle={<span>{""}</span>}
-                                            />
                                         </GridListTile>
                                     ))}
                                 </GridList>

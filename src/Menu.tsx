@@ -15,7 +15,7 @@ import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import Stoffe from "./stoffe/Stoffe";
 import Home from "./home/Home";
-import Gallery from "./gallery/Gallery";
+import Galery from "./galery/Galery";
 import Products from "./produkte/Products";
 import Sofortkaufen from "./sofortkaufen/Sofortkaufen";
 import AboutMe from "./aboutMe/AboutMe";
@@ -24,9 +24,7 @@ import Wunschzettel from "./Wunschzettel/Wunschzettel";
 
 // TODO
 const FEATURE_TOGGLE_USE_WUNSCHLISTE: boolean = false;
-const FEATURE_TOGGLE_USE_STOFFE: boolean = false;
 const FEATURE_TOGGLE_USE_PRODUKTE: boolean = false;
-const FEATURE_TOGGLE_USE_GALERIE: boolean = false;
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -78,13 +76,15 @@ export default function Menu() {
                     aria-label="scrollable force tabs example"
                 >
                     <Tab label="Home" icon={<HomeIcon/>} {...a11yProps(0)} />
-                    {FEATURE_TOGGLE_USE_PRODUKTE ? <Tab label="Produkte" icon={<ShoppingBasket/>} {...a11yProps(1)} />  : <></>}
-                    {FEATURE_TOGGLE_USE_STOFFE ? <Tab label="Stoffe" icon={<GestureIcon/>} {...a11yProps(2)} />  : <></>}
+                    {FEATURE_TOGGLE_USE_PRODUKTE ?
+                        <Tab label="Produkte" icon={<ShoppingBasket/>} {...a11yProps(1)} /> : <></>}
+                    <Tab label="Stoffe" icon={<GestureIcon/>} {...a11yProps(2)} />
                     <Tab label="Sofortkäufe" icon={<AddShoppingCartIcon/>} {...a11yProps(3)} />
-                    {FEATURE_TOGGLE_USE_GALERIE ? <Tab label="Galerie" icon={<InsertPhotoIcon/>} {...a11yProps(4)} />  : <></>}
+                    <Tab label="Galerie" icon={<InsertPhotoIcon/>} {...a11yProps(4)} />
                     <Tab label="Über mich" icon={<InfoIcon/>} {...a11yProps(5)} />
                     <Tab label="Kontakt" icon={<MailOutlineIcon/>} {...a11yProps(6)} />
-                    {FEATURE_TOGGLE_USE_WUNSCHLISTE ? <Tab label="Wunschzettel" icon={<FavoriteIcon/>} {...a11yProps(7)} /> : <></>}
+                    {FEATURE_TOGGLE_USE_WUNSCHLISTE ?
+                        <Tab label="Wunschzettel" icon={<FavoriteIcon/>} {...a11yProps(7)} /> : <></>}
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>
@@ -99,27 +99,19 @@ export default function Menu() {
                 :
                 <></>
             }
-            {FEATURE_TOGGLE_USE_STOFFE ?
-                <>
-                    <TabPanel value={value} index={2}>
-                        <Stoffe/>
-                    </TabPanel>
-                </>
-                :
-                <></>
-            }
+
+            <TabPanel value={value} index={2}>
+                <Stoffe/>
+            </TabPanel>
+
             <TabPanel value={value} index={3}>
                 <Sofortkaufen/>
             </TabPanel>
-            {FEATURE_TOGGLE_USE_GALERIE ?
-                <>
-                    <TabPanel value={value} index={4}>
-                        <Gallery/>
-                    </TabPanel>
-                </>
-                :
-                <></>
-            }
+
+            <TabPanel value={value} index={4}>
+                <Galery/>
+            </TabPanel>
+
             <TabPanel value={value} index={5}>
                 <AboutMe/>
             </TabPanel>

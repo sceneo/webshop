@@ -116,8 +116,6 @@ export default function ImpressumDialog(props: DialogProps) {
                                     <h4>Bild und Videomaterial</h4>
                         Inhalte von folgenden Parteien: <br/>
                         - Bilder von Instagram (Aidali.Handmade) <br/>
-                        - Stoffbeispielbilder und Texte von Wikipedia <br/>
-
 
                     </Typography>
                 </DialogContent>

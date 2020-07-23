@@ -1,4 +1,4 @@
-import {GalleryData} from "../gallery/Gallery";
+import {GalleryData} from "../galery/Galery";
 
 
 export const checkGalleryDataNotUndefined = (input: GalleryData[] | undefined): GalleryData[] => {

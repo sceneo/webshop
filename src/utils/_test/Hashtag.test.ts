@@ -1,5 +1,5 @@
 import {getAllHashtagsFromString, getPriceFromHashtag, getSizeFromHashtag, hasHashtag, removeHashtag} from "../Hashtag";
-import {GalleryData} from "../../gallery/Gallery";
+import {GalleryData} from "../../galery/Galery";
 
 describe("The Hashtag method hasHashtag() ", () => {
     it("returns true when the hashtag is available in array", () => {
