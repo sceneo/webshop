@@ -16,7 +16,7 @@ function clickFacebook() {
 }
 
 function clickEmail() {
-    window.open("mailto:annika@klingenberg.de?subject=Kontaktaufnahme über die Webseite", 'emailWindow')
+    window.open("mailto:info@aidalihandmade.de?subject=Kontaktaufnahme über die Webseite", 'emailWindow')
 }
 
 function clickBackToHome() {

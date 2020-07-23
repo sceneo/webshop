@@ -27,7 +27,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "deploy": "npm-run-all build deploy-aws",
-    "deploy-aws": "deploy-aws-s3-cloudfront --non-interactive --source ./build --react --bucket tkwebtest",
+    "deploy-prod": "az storage blob upload-batch --account-name aidali --auth-mode key --account-key V4SDvtD4u+BUE8lbRTUIDxTe9pxMSxpcZANyiAr2Zidlabw+R7ewtxOL6a5ughOLwIy6ux179KnwLYXRTqjWTQ== --destination \\$web --source ./build",
+    "deploy-dev": "az storage blob upload-batch --account-name devaidali --auth-mode key --account-key 6szCas4gtf3Q/ALPLgg8GbytXGP200PSshcwwebh3rClL2t9lG4xKxh5Ug4HEWMQhyMG/icZ+S4UCKcNc/jymA== --destination \\$web --source ./build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
