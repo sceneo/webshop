@@ -7,6 +7,7 @@ import {GalleryData} from "../galery/Galery";
 import {getInstagramStoffe} from "../instagram/getInstagram";
 import {mapInstagramDataToGallery} from "../galery/GaleryMapper";
 import {hasHashtag} from "../utils/Hashtag";
+import "../design/Text.css"
 
 class Stoffe extends Component {
 
@@ -35,10 +36,14 @@ class Stoffe extends Component {
 
             <div>
                 <Typography component="div">
-                    <h1>Meine Stoffe</h1>
-                    Meine Stoffauswahl wird immer regelmäßig aktualisiert. Bitte hab Verständnis dafür, dass nicht
-                    jeder Stoff für jedes Lieblingsteil geeignet oder in ausreichender Menge vorhanden ist. Kontaktiere
-                    mich gern und ich prüfe, wie ich dir deinen Wunsch erfüllen kann.
+                    <h1 className={"headerText"}>Stoffauswahl</h1>
+                    <div className={"mainText"}>
+                        Meine Stoffauswahl wird regelmäßig aktualisiert. Bitte hab Verständnis dafür, dass nicht jeder Stoff
+                        für jedes Lieblingsteil geeignet oder in ausreichender Menge vorhanden ist.
+                    </div>
+                    <div className={"mainText"}>
+                        Kontaktiere mich gern und ich prüfe, wie ich dir deinen Wunsch erfüllen kann.
+                    </div>
                 </Typography>
                 <p/>
 

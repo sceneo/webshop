@@ -22,10 +22,6 @@ import AboutMe from "./aboutMe/AboutMe";
 import Kontakt from "./kontakt/Kontakt";
 import Wunschzettel from "./Wunschzettel/Wunschzettel";
 
-// TODO
-const FEATURE_TOGGLE_USE_WUNSCHLISTE: boolean = false;
-const FEATURE_TOGGLE_USE_PRODUKTE: boolean = false;
-
 interface TabPanelProps {
     children?: React.ReactNode;
     index: any;
@@ -65,7 +61,7 @@ export default function Menu() {
 
     return (
         <div className={'invisibleBackground'}>
-            <AppBar position="static" color="default">
+            <AppBar position="sticky" color="default">
                 <Tabs
                     value={value}
                     onChange={handleChange}
@@ -76,57 +72,43 @@ export default function Menu() {
                     aria-label="scrollable force tabs example"
                 >
                     <Tab label="Home" icon={<HomeIcon/>} {...a11yProps(0)} />
-                    {FEATURE_TOGGLE_USE_PRODUKTE ?
-                        <Tab label="Produkte" icon={<ShoppingBasket/>} {...a11yProps(1)} /> : <></>}
-                    <Tab label="Stoffe" icon={<GestureIcon/>} {...a11yProps(2)} />
-                    <Tab label="Sofortkäufe" icon={<AddShoppingCartIcon/>} {...a11yProps(3)} />
-                    <Tab label="Galerie" icon={<InsertPhotoIcon/>} {...a11yProps(4)} />
-                    <Tab label="Über mich" icon={<InfoIcon/>} {...a11yProps(5)} />
-                    <Tab label="Kontakt" icon={<MailOutlineIcon/>} {...a11yProps(6)} />
-                    {FEATURE_TOGGLE_USE_WUNSCHLISTE ?
-                        <Tab label="Wunschzettel" icon={<FavoriteIcon/>} {...a11yProps(7)} /> : <></>}
+                    <Tab label="Stoffe" icon={<GestureIcon/>} {...a11yProps(1)} />
+                    <Tab label="Sofortkäufe" icon={<AddShoppingCartIcon/>} {...a11yProps(2)} />
+                    <Tab label="Galerie" icon={<InsertPhotoIcon/>} {...a11yProps(3)} />
+                    <Tab label="Über mich" icon={<InfoIcon/>} {...a11yProps(4)} />
+                    <Tab label="Kontakt" icon={<MailOutlineIcon/>} {...a11yProps(5)} />
+                    {/*<Tab label="Produkte" icon={<ShoppingBasket/>} {...a11yProps(6)} />*/}
+                    {/*<Tab label="Wunschzettel" icon={<FavoriteIcon/>} {...a11yProps(7)} />*/}
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>
                 <Home/>
             </TabPanel>
-            {FEATURE_TOGGLE_USE_PRODUKTE ?
-                <>
-                    <TabPanel value={value} index={1}>
-                        <Products/>
-                    </TabPanel>
-                </>
-                :
-                <></>
-            }
-
-            <TabPanel value={value} index={2}>
+            <TabPanel value={value} index={1}>
                 <Stoffe/>
             </TabPanel>
-
-            <TabPanel value={value} index={3}>
+            <TabPanel value={value} index={2}>
                 <Sofortkaufen/>
             </TabPanel>
 
-            <TabPanel value={value} index={4}>
+            <TabPanel value={value} index={3}>
                 <Galery/>
             </TabPanel>
 
-            <TabPanel value={value} index={5}>
+            <TabPanel value={value} index={4}>
                 <AboutMe/>
             </TabPanel>
-            <TabPanel value={value} index={6}>
+            <TabPanel value={value} index={5}>
                 <Kontakt/>
             </TabPanel>
-            {FEATURE_TOGGLE_USE_WUNSCHLISTE ?
-                <>
-                    <TabPanel value={value} index={7}>
-                        <Wunschzettel/>
-                    </TabPanel>
-                </>
-                :
-                <></>
-            }
+
+            {/*<TabPanel value={value} index={6}>*/}
+            {/*    <Products/>*/}
+            {/*</TabPanel>*/}
+            {/*<TabPanel value={value} index={7}>*/}
+            {/*    <Wunschzettel/>*/}
+            {/*</TabPanel>*/}
+
         </div>
     );
 }

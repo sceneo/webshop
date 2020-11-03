@@ -1,15 +1,19 @@
-.header {
+.headerText {
     text-align: left;
     vertical-align: center;
     font-size: 30px;
     font-weight: bold;
+    color: #cc8e34;
 }
+
 .mainText {
     text-align: justify;
     vertical-align: center;
     display:inline-block;
+    color: darkgray;
 }
-.footer {
+
+.footerText {
     text-align: justify;
     vertical-align: center;
 }

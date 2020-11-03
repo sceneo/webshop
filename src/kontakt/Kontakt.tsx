@@ -4,6 +4,7 @@ import TextField from "@material-ui/core/TextField";
 
 import './Kontakt.css'
 import {assembleContactEmail} from "../notification/Notification";
+import "../design/Text.css"
 
 class Kontakt extends Component {
     state = {
@@ -71,7 +72,7 @@ class Kontakt extends Component {
         return (
             <div>
                 <Typography>
-                    <h1>Kontakt</h1>
+                    <h1 className={"headerText"}>Kontakt</h1>
                 </Typography>
                 <Grid container spacing={1}>
                     <Grid item sm={12}>
