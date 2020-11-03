@@ -33,7 +33,6 @@ export default function DirectBuyComponent(props: DirectBuyComponentProps) {
                     </span>
                 </span>
             </span>
-
         </div>
     );
 }

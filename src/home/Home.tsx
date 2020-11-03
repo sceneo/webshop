@@ -9,7 +9,7 @@ export default function Home() {
             <Grid container spacing={1}>
                 <Grid item sm={6} >
                     <h3 className={"headerText"}>
-                         Herzlich Willkommen bei AIDALI Handmade!
+                         Herzlich Willkommen bei Aidali Handmade!
                     </h3>
                     <p className={"mainText"}>
                         <div>

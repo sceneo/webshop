@@ -48,7 +48,7 @@ export default function StoffComponent(props: StoffComponentProps) {
     };
 
     const openDialog = () => {
-        setDialogOpen(true);
+        setDialogOpen(false); // always closed -> set to true if we want the dialog to be openable
     }
 
     const closeDialog = () => {
@@ -57,11 +57,11 @@ export default function StoffComponent(props: StoffComponentProps) {
 
     return (
         <div >
-            <Dialog open={dialogOpen} onClose={closeDialog}>
+            <Dialog className={"popupBackground"} open={dialogOpen} onClose={closeDialog}>
                 <Typography variant="h6" component="h3">
                     {props.stoff.art}
                 </Typography>
-                <Typography variant="h6" component="h4">
+                <Typography  variant="h6" component="h4">
                     {props.stoff.description}
                 </Typography>
             </Dialog>

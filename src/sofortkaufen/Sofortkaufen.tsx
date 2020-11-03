@@ -41,9 +41,9 @@ class Sofortkaufen extends Component {
                         </div>
                     </Typography>
 
-                    <Grid container spacing={1}>
+                    <Grid container spacing={1} >
                         {this.state.directBuyData.map(direct => (
-                            <Grid item sm={4}>
+                            <Grid item sm={6}>
                                 <DirectBuyComponent img={direct.img}
                                                     description={direct.description}
                                                     price={direct.price}

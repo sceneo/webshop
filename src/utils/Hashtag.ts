@@ -1,6 +1,5 @@
 import {GalleryData} from "../galery/Galery";
 
-import {ProductCategory} from "../produkte/ProductCategory";
 import {Post} from "../instagram/getInstagram";
 
 export const hasHashtag = (galleryItem: GalleryData, hashtag: string): boolean => {
@@ -19,24 +18,6 @@ export const removeHashtag = (input: string): string => {
 export const hasProductCategory = (input: string): boolean => {
     return hasHashtagInString(input, "#baby") || hasHashtagInString(input, "#child") || hasHashtagInString(input, "#adult");
 }
-
-export const getProductCategoryFromCaption = (input: string): ProductCategory => {
-    if(hasHashtagInString(input,"#baby")){
-        return ProductCategory.baby
-    }
-
-    if(hasHashtagInString(input,"#child")){
-        return ProductCategory.child
-    }
-
-    if(hasHashtagInString(input,"#adult")){
-        return ProductCategory.baby
-    }
-
-    // default
-    return ProductCategory.dog;
-}
-
 
 export const getPriceFromHashtag = (input: string): string => {
     const noPriceAvailable = "Kein Preis verfügbar";

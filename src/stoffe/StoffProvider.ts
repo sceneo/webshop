@@ -43,7 +43,7 @@ export const stoffe: Stoff[] = [
     },
     {
         art: 'Baumwolle',
-        hashtag: "#baumwole",
+        hashtag: "#baumwolle",
         description: 'Stoff aus Baumwolle.',
     },
 ];
