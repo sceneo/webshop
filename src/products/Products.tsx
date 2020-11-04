@@ -25,7 +25,7 @@ class Products extends Component {
                 <p></p>
                 <Grid container spacing={1}>
                     {createProducts().map(product => (
-                        <Grid item sm={6}>
+                        <Grid item sm={4}>
                             <ProductComponent bild={product.bild}
                                               title={product.title}
                                               aussenstoffe={product.aussenstoffe}
