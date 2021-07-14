@@ -3,7 +3,6 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
-import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShoppingBasket from '@material-ui/icons/ShoppingBasket';
 import InsertPhotoIcon from '@material-ui/icons/InsertPhoto';
 import HomeIcon from '@material-ui/icons/Home';
@@ -13,13 +12,13 @@ import InfoIcon from '@material-ui/icons/Info';
 import GestureIcon from '@material-ui/icons/Gesture';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
-import Stoffe from "./stoffe/Stoffe";
+import Material from "./material/Material";
 import Home from "./home/Home";
 import Galery from "./galery/Galery";
 import Products from "./products/Products";
-import Sofortkaufen from "./sofortkaufen/Sofortkaufen";
+import DirectBuy from "./directBuy/DirectBuy";
 import AboutMe from "./aboutMe/AboutMe";
-import Kontakt from "./kontakt/Kontakt";
+import Contact from "./contact/Contact";
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -72,11 +71,11 @@ export default function Menu() {
                 >
                     <Tab label="Home" icon={<HomeIcon/>} {...a11yProps(0)} />
                     <Tab label="Produkte" icon={<ShoppingBasket/>} {...a11yProps(6)} />
-                    <Tab label="Stoffe" icon={<GestureIcon/>} {...a11yProps(1)} />
+                    <Tab label="Material" icon={<GestureIcon/>} {...a11yProps(1)} />
                     <Tab label="Sofortkäufe" icon={<AddShoppingCartIcon/>} {...a11yProps(2)} />
                     <Tab label="Galerie" icon={<InsertPhotoIcon/>} {...a11yProps(3)} />
                     <Tab label="Über mich" icon={<InfoIcon/>} {...a11yProps(4)} />
-                    <Tab label="Kontakt" icon={<MailOutlineIcon/>} {...a11yProps(5)} />
+                    <Tab label="Contact" icon={<MailOutlineIcon/>} {...a11yProps(5)} />
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>
@@ -86,10 +85,10 @@ export default function Menu() {
                 <Products/>
             </TabPanel>
             <TabPanel value={value} index={2}>
-                <Stoffe/>
+                <Material/>
             </TabPanel>
             <TabPanel value={value} index={3}>
-                <Sofortkaufen/>
+                <DirectBuy/>
             </TabPanel>
             <TabPanel value={value} index={4}>
                 <Galery/>
@@ -98,7 +97,7 @@ export default function Menu() {
                 <AboutMe/>
             </TabPanel>
             <TabPanel value={value} index={6}>
-                <Kontakt/>
+                <Contact/>
             </TabPanel>
 
         </div>

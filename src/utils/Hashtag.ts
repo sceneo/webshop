@@ -1,8 +1,8 @@
-import {GalleryData} from "../galery/Galery";
+import {GaleryData} from "../galery/Galery";
 
 import {Post} from "../instagram/getInstagram";
 
-export const hasHashtag = (galleryItem: GalleryData, hashtag: string): boolean => {
+export const hasHashtag = (galleryItem: GaleryData, hashtag: string): boolean => {
     return galleryItem.description.indexOf(hashtag) !== -1;
 }
 
@@ -10,6 +10,9 @@ export const hasHashtagInPost = (post: Post, hashtag: string): boolean => {
     return post.caption.indexOf(hashtag) !== -1;
 }
 
+export const getImageFromUrl = (url: string): string => {
+    return url;
+}
 
 export const removeHashtag = (input: string): string => {
     return input.substring(0, input.indexOf('#'));

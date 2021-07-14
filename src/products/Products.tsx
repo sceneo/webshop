@@ -5,11 +5,20 @@ import {createProducts} from "./ProductList";
 import ProductComponent from "../components/ProductComponent";
 
 
+export interface ProductDetailDialogProps {
+    closeDialog: () => void;
+    url: string;
+    title: string;
+}
+
 class Products extends Component {
+    state = {
+        showPupUp: false as boolean,
+        url: "" as string,
+    };
 
     render() {
         return (
-
             <div>
                 <Typography component="div">
                     <h1 className={"headerText"}>Produkte & Preise</h1>

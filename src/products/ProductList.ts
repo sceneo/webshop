@@ -1,5 +1,3 @@
-import {create} from "domain";
-
 export interface Product {
     title: string;
     stoffe: string[] | undefined;

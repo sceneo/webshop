@@ -1,5 +1,5 @@
 import {checkGalleryDataNotUndefined} from "../NullChecker";
-import {GalleryData} from "../../galery/Galery";
+import {GaleryData} from "../../galery/Galery";
 
 describe("Check GalleryData ", () => {
     it("checkGalleryDataNotUndefined() returns [] when input is undefined", () => {
@@ -7,7 +7,7 @@ describe("Check GalleryData ", () => {
     })
 
     it("checkGalleryDataNotUndefined() returns validData when input is valid GalleryData[]", () => {
-        const validGalleryData: GalleryData[] = [
+        const validGalleryData: GaleryData[] = [
             {
                 description: "some description",
                 img: "some image",
@@ -17,7 +17,7 @@ describe("Check GalleryData ", () => {
     })
 
     it("checkGalleryDataNotUndefined() returns [] when input is empty array", () => {
-        const emptyGalleryData: GalleryData[] = [];
+        const emptyGalleryData: GaleryData[] = [];
         expect(checkGalleryDataNotUndefined(emptyGalleryData)).toEqual(emptyGalleryData);
     })
 })

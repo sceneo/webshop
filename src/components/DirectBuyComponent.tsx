@@ -1,5 +1,5 @@
 import React from "react";
-import './Polaroid.css'
+import '../design/Polaroid.css'
 import {Typography} from "@material-ui/core";
 import {checkIfSizeExists} from "../utils/Size";
 import {checkIfPriceExists} from "../utils/Price";
@@ -33,6 +33,7 @@ export default function DirectBuyComponent(props: DirectBuyComponentProps) {
                     </span>
                 </span>
             </span>
+
         </div>
     );
 }

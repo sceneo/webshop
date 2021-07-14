@@ -2,11 +2,13 @@ import React, {Component} from "react";
 import {Button, Grid, Typography} from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 
-import './Kontakt.css'
+import './Contact.css'
 import {assembleContactEmail} from "../notification/Notification";
 import "../design/Text.css"
+import {SITE_UNDER_CONSTRUCTION_ALL, SITE_UNDER_CONSTRUCTION_CONTACT} from "../GlobalSettings";
+import SiteUnderConstructionComponent from "../components/SiteUnderConstructionComponent";
 
-class Kontakt extends Component {
+class Contact extends Component {
     state = {
         name: "",
         email: "",
@@ -70,6 +72,9 @@ class Kontakt extends Component {
 
     render() {
         return (
+            SITE_UNDER_CONSTRUCTION_ALL || SITE_UNDER_CONSTRUCTION_CONTACT ?
+                <SiteUnderConstructionComponent/>
+                :
             <div>
                 <Typography>
                     <h1 className={"headerText"}>Kontakt</h1>
@@ -114,4 +119,4 @@ class Kontakt extends Component {
     }
 }
 
-export default Kontakt;
+export default Contact;

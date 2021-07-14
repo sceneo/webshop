@@ -2,14 +2,22 @@ import React, {Component} from 'react';
 import '../design/Spinner.css';
 import Dialog from '@material-ui/core/Dialog';
 import {getInstagramFeed} from "../instagram/getInstagram";
-import {CircularProgress, Grid} from "@material-ui/core";
+import {Grid} from "@material-ui/core";
 import {mapInstagramDataToGallery} from "./GaleryMapper";
 import GaleryComponent from "../components/GaleryComponent";
 import {getDefinedOrReturnNotFound} from "../utils/Undefined";
 import Typography from "@material-ui/core/Typography";
 import "../design/Text.css"
+import {
+    MAXIMUM_LOADING_TIME,
+    SITE_UNDER_CONSTRUCTION_ALL,
+    SITE_UNDER_CONSTRUCTION_GALERY,
+} from "../GlobalSettings";
+import SiteUnderConstructionComponent from "../components/SiteUnderConstructionComponent";
+import LoadingDataComponent from "../components/LoadingDataComponent";
+import {delay} from "../utils/time";
 
-export interface GalleryData {
+export interface GaleryData {
     img: string;
     description: string;
 }
@@ -17,18 +25,30 @@ export interface GalleryData {
 class Galery extends Component {
 
     state = {
-        showSpinner: true as boolean,
-        galleryData: [] as GalleryData[],
+        isLoading: true as boolean,
+        loadingTimer: 0 as number,
+        galleryData: [] as GaleryData[],
         isDialogOpen: false as boolean,
-        selectedInstagramItem: undefined as undefined | GalleryData,
+        selectedInstagramItem: undefined as undefined | GaleryData,
     };
 
 
     async componentDidMount() {
+        this.doTimer();
         this.setState({
             galleryData: (await getInstagramFeed()).map(mapInstagramDataToGallery),
-            showSpinner: false,
+            isLoading: false,
         })
+    }
+
+    async doTimer() {
+        for (let i = 0; i < MAXIMUM_LOADING_TIME + 1; i++) {
+            const currentTime = this.state.loadingTimer;
+            await delay(1000);
+            this.setState({
+                loadingTimer: currentTime + 1
+            })
+        }
     }
 
     render() {
@@ -39,7 +59,7 @@ class Galery extends Component {
             });
         }
 
-        const selectPicture = (pic: GalleryData) => {
+        const selectPicture = (pic: GaleryData) => {
             this.setState({
                 isDialogOpen: true,
                 selectedInstagramItem: pic,
@@ -47,12 +67,13 @@ class Galery extends Component {
         }
 
         return (
-
-            this.state.showSpinner ?
-                <div className={"spinner"}>
-                    <CircularProgress/>
-                </div>
+            SITE_UNDER_CONSTRUCTION_ALL || SITE_UNDER_CONSTRUCTION_GALERY ?
+                <SiteUnderConstructionComponent/>
                 :
+
+                this.state.isLoading ?
+                    <LoadingDataComponent isStillLoading={this.state.loadingTimer <= MAXIMUM_LOADING_TIME}/>
+                    :
                 <div>
                     <Typography component="div">
                         <h1 className={"headerText"}>Galerie</h1>

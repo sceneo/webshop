@@ -1,19 +1,19 @@
 import React, {Component} from 'react';
 import Typography from '@material-ui/core/Typography';
-import StoffComponent from "./StoffComponent";
+import MaterialComponent from "../components/MaterialComponent";
 import {Grid} from "@material-ui/core";
-import {stoffe} from "./StoffProvider";
-import {GalleryData} from "../galery/Galery";
+import {stoffe} from "./MaterialProvider";
+import {GaleryData} from "../galery/Galery";
 import {getInstagramStoffe} from "../instagram/getInstagram";
 import {mapInstagramDataToGallery} from "../galery/GaleryMapper";
 import {hasHashtag} from "../utils/Hashtag";
 import "../design/Text.css"
 
-class Stoffe extends Component {
+class Material extends Component {
 
     state = {
         showSpinner: true as boolean,
-        galleryData: [] as GalleryData[],
+        galleryData: [] as GaleryData[],
     };
 
 
@@ -23,7 +23,7 @@ class Stoffe extends Component {
         })
     }
 
-    filterImagesForHashtag = (hashtag: string): GalleryData[] | undefined => {
+    filterImagesForHashtag = (hashtag: string): GaleryData[] | undefined => {
         const newGalleryData = this.state.galleryData.filter(item => hasHashtag(item, hashtag));
         if (newGalleryData.length === 0) {
             return undefined;
@@ -46,11 +46,10 @@ class Stoffe extends Component {
                     </div>
                 </Typography>
                 <p/>
-
                 <Grid container spacing={1}>
                     {stoffe.map(tile => (
                         <Grid item sm={4}>
-                            <StoffComponent stoff={tile} images={this.filterImagesForHashtag(tile.hashtag)}/>
+                            <MaterialComponent material={tile} images={this.filterImagesForHashtag(tile.hashtag)}/>
                         </Grid>
                     ))}
                 </Grid>
@@ -60,6 +59,6 @@ class Stoffe extends Component {
 }
 
 
-export default Stoffe;
+export default Material;
 
 

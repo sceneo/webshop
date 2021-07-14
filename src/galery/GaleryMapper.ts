@@ -1,7 +1,7 @@
 import {Post} from "../instagram/getInstagram";
-import {GalleryData} from "./Galery";
+import {GaleryData} from "./Galery";
 
-export const mapInstagramDataToGallery = (post: Post): GalleryData => ({
+export const mapInstagramDataToGallery = (post: Post): GaleryData => ({
     img: post.url,
     description: post.caption,
 })

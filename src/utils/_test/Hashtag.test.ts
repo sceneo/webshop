@@ -1,10 +1,10 @@
 import {getAllHashtagsFromString, getPriceFromHashtag, getSizeFromHashtag, hasHashtag, removeHashtag} from "../Hashtag";
-import {GalleryData} from "../../galery/Galery";
+import {GaleryData} from "../../galery/Galery";
 
 describe("The Hashtag method hasHashtag() ", () => {
     it("returns true when the hashtag is available in array", () => {
         const hastagToLookFor: string = "#Nice";
-        const itemWithHashtagNice: GalleryData = {
+        const itemWithHashtagNice: GaleryData = {
             description: hastagToLookFor,
             img: "some image",
         }
@@ -13,7 +13,7 @@ describe("The Hashtag method hasHashtag() ", () => {
 
     it("returns true when the hashtag is available twice in array", () => {
         const hastagToLookFor: string = "#Nice";
-        const itemWithHashtagNice: GalleryData = {
+        const itemWithHashtagNice: GaleryData = {
             description: hastagToLookFor + " some stuff " + hastagToLookFor,
             img: "some image",
         }
@@ -22,7 +22,7 @@ describe("The Hashtag method hasHashtag() ", () => {
 
     it("returns false when the hashtag is not available in array", () => {
         const hastagToLookFor: string = "#Nice";
-        const itemWithHashtagNice: GalleryData = {
+        const itemWithHashtagNice: GaleryData = {
             description: "the correct #hashtag is not available",
             img: "some image",
         }
@@ -31,7 +31,7 @@ describe("The Hashtag method hasHashtag() ", () => {
 
     it("returns false when the array is empty", () => {
         const hastagToLookFor: string = "#Nice";
-        const itemWithHashtagNice: GalleryData = {
+        const itemWithHashtagNice: GaleryData = {
             description: "",
             img: "some image",
         }

@@ -6,7 +6,7 @@ import MuiDialogContent from '@material-ui/core/DialogContent';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
-import {DialogProps} from "./BottomNavigationBar";
+import {DialogProps} from "../BottomNavigationBar";
 
 const styles = (theme: Theme) =>
     createStyles({
@@ -77,8 +77,8 @@ export default function ImpressumDialog(props: DialogProps) {
                         <p>
                         Verantwortlich für die Umsetzung der Webseite (nicht inhaltlich): <br/>
                         Dr. Tobias Kunz <br/>
-                        Ampfingstraße 44 <br/>
-                        81671 München <br/>
+                        Normandieweg 13 <br/>
+                        79618 Rheinfelden <br/>
                         </p>
 
                             <h4>Haftung für Inhalte</h4>

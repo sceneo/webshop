@@ -1,7 +1,3 @@
-
-
-
-
 export const assembleContactEmail = (email: string, name: string, request:string): string => {
     const SUBJECT = "Kontaktaufname via Aidali Webpage";
     const CONTACT = "info@aidalihandmade.de";

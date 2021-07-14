@@ -7,7 +7,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import {Groesse} from "../products/ProductList";
 import {isDefined} from "../utils/Undefined";
-import {List, ListItemText, Table, TableBody, TableCell, TableRow} from "@material-ui/core";
+import {Table, TableBody, TableCell, TableRow} from "@material-ui/core";
 
 
 interface ProductComponentProps {
@@ -23,7 +23,7 @@ interface ProductComponentProps {
 
 const useStyles = makeStyles({
     root: {
-        maxWidth: 345,
+        maxWidth: 400,
     },
     media: {
         height: 320,

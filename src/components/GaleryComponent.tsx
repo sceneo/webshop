@@ -1,5 +1,5 @@
 import React from "react";
-import './Polaroid.css'
+import '../design/Polaroid.css'
 import {Typography} from "@material-ui/core";
 import {isDefined} from "../utils/Undefined";
 

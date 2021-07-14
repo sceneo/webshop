@@ -1,9 +1,14 @@
 import React from "react";
 import {Typography} from "@material-ui/core";
 import "../design/Text.css"
+import {SITE_UNDER_CONSTRUCTION_ABOUT_ME, SITE_UNDER_CONSTRUCTION_ALL} from "../GlobalSettings";
+import SiteUnderConstructionComponent from "../components/SiteUnderConstructionComponent";
 
 export default function AboutMe() {
     return (
+        SITE_UNDER_CONSTRUCTION_ALL || SITE_UNDER_CONSTRUCTION_ABOUT_ME ?
+            <SiteUnderConstructionComponent/>
+            :
         <Typography>
             <h1 className={"headerText"}>Über mich</h1>
             <div className={"mainText"}>

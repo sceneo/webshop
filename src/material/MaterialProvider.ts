@@ -1,4 +1,4 @@
-export interface Stoff {
+export interface Material {
     art: string;
     description: string;
     hashtag: string;
@@ -6,7 +6,7 @@ export interface Stoff {
 
 // TODO: replace by example pics & correct text
 // Remember to adjust also the impressum where the source is mentionned
-export const stoffe: Stoff[] = [
+export const stoffe: Material[] = [
     {
         art: 'Jersey',
         hashtag: "#jersey",
@@ -18,6 +18,11 @@ export const stoffe: Stoff[] = [
         art: 'Sweat',
         hashtag: "#sweat",
         description: 'Der Stoff eines Sweatshirts besteht aus einer besonderen Strickware. Diese ist einflächig auf Rundstrickmaschinen gestrickt (Rechts/Links-Ware). Auf der Rückseite wird ein spezieller Futterfaden mitgeführt, welcher weicher gedreht ist als das Grundstrickgarn, das auf der Vorderseite sichtbar ist. Dieser wird während des Veredelungsprozesses aufgeraut, was zu der typischen flauschigen Innenseite der Sweatshirtware führt. Aus diesem Grund heißt dieser Stoff in Fachkreisen auch „Futterware“.',
+    },
+    {
+        art: 'Sommersweat',
+        hashtag: "#sommersweat",
+        description: 'Ein dünner Sweat-Stoff für den Sommer .',
     },
     {
         art: 'Fleece',

@@ -1,9 +1,15 @@
-import {getInstagramContentLink, getInstagramStoffeLink} from "./Constants";
+import {getInstagramContentLink, getInstagramStoffeLink, TOKEN} from "./Constants";
 
 export interface Post {
     caption: string;
     isVideo: boolean;
     url: string;
+}
+
+export const refreshToken = async () => {
+    console.log("refreshing access token");
+    //TODO: make this more pretty
+    return await fetch('https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=' + TOKEN);
 }
 
 export const getInstagramFeed = async (): Promise<Post[]> => {

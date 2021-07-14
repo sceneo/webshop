@@ -4,11 +4,11 @@ import './App.css';
 import Menu from "./Menu";
 import BottomNavigationBar from "./bottomnavigation/BottomNavigationBar";
 import HeaderBar from "./headerbar/HeaderBar";
+import {refreshToken} from "./instagram/getInstagram";
 
 class App extends Component {
     render() {
-        // window.history.pushState({page: "another"}, "another page", "example.html");
-        // window.history.replaceState('page2', 'Title', '/page2.php');
+        refreshToken();
         return (
             <div className={'Background'}>
 
