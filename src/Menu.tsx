@@ -75,7 +75,7 @@ export default function Menu() {
                     <Tab label="Sofortkäufe" icon={<AddShoppingCartIcon/>} {...a11yProps(2)} />
                     <Tab label="Galerie" icon={<InsertPhotoIcon/>} {...a11yProps(3)} />
                     <Tab label="Über mich" icon={<InfoIcon/>} {...a11yProps(4)} />
-                    <Tab label="Contact" icon={<MailOutlineIcon/>} {...a11yProps(5)} />
+                    <Tab label="Kontakt" icon={<MailOutlineIcon/>} {...a11yProps(5)} />
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>

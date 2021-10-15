@@ -15,7 +15,7 @@ export default function GaleryComponent(props: GaleryComponentProps) {
             <span className="wrapper">
                 <span className="item">
                     <span className="polaroid">
-                       <img src={props.img} alt={"Product"}/>
+                       <img src={"galery/" + props.img} alt={"Product"}/>
                             <span className="caption">
                                 {isDefined(props.description) ?
                                     <>

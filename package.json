@@ -27,11 +27,14 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build-and-get-data": "npm-run-all collect-data build",
     "test": "react-scripts test",
-    "deploy": "npm-run-all build deploy-aws",
+    "deploy": "npm-run-all build-and-get-data deploy-prod",
     "deploy-prod": "az storage blob upload-batch --account-name aidali --auth-mode key --account-key V4SDvtD4u+BUE8lbRTUIDxTe9pxMSxpcZANyiAr2Zidlabw+R7ewtxOL6a5ughOLwIy6ux179KnwLYXRTqjWTQ== --destination \\$web --source ./build",
     "deploy-dev": "az storage blob upload-batch --account-name devaidali --auth-mode key --account-key 6szCas4gtf3Q/ALPLgg8GbytXGP200PSshcwwebh3rClL2t9lG4xKxh5Ug4HEWMQhyMG/icZ+S4UCKcNc/jymA== --destination \\$web --source ./build",
-    "eject": "react-scripts eject"
+    "collect-data": "npm-run-all instagram-connector instagram-data-collector",
+    "instagram-connector": "python3 InstagramConnector/InstagramConnector.py",
+    "instagram-data-collector": "python3 InstagramConnector/InstagramDataCollector.py"
   },
   "eslintConfig": {
     "extends": "react-app"

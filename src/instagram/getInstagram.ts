@@ -1,24 +1,21 @@
-import {getInstagramContentLink, getInstagramStoffeLink, TOKEN} from "./Constants";
+
+const JSON_AIDALI = "galery/content.json"
+const JSON_MATERIAL = "material/content.json"
 
 export interface Post {
     caption: string;
     isVideo: boolean;
     url: string;
-}
-
-export const refreshToken = async () => {
-    console.log("refreshing access token");
-    //TODO: make this more pretty
-    return await fetch('https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=' + TOKEN);
+    id: number
 }
 
 export const getInstagramFeed = async (): Promise<Post[]> => {
-    const data = await getPostsFromInstagram(getInstagramContentLink());
+    const data = await getPostsFromInstagram(JSON_AIDALI);
     return mapPosts(data);
 }
 
 export const getInstagramStoffe = async (): Promise<Post[]> => {
-    const data = await getPostsFromInstagram(getInstagramStoffeLink());
+    const data = await getPostsFromInstagram(JSON_MATERIAL);
     return mapPosts(data);
 }
 
@@ -36,6 +33,7 @@ const mapPosts = (edge: any): Post[] => {
             isVideo: nodes.node.is_video,
             url: nodes.node.display_url,
             caption: nodes.node.edge_media_to_caption.edges[0].node.text,
+            id: nodes.node.id
         }
         counter++
     })

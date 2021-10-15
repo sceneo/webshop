@@ -1,8 +1,6 @@
 import React, {Component} from "react";
 import {Grid, Typography} from "@material-ui/core";
 import {getInstagramFeed} from "../instagram/getInstagram";
-import {mapInstagramDataToDirectBuy, isDirectBuy, DirectBuyItem} from "./DirectBuyMapper";
-import DirectBuyComponent from "../components/DirectBuyComponent";
 import "../design/Text.css"
 import {
     MAXIMUM_LOADING_TIME,
@@ -12,6 +10,8 @@ import {
 import SiteUnderConstructionComponent from "../components/SiteUnderConstructionComponent";
 import LoadingDataComponent from "../components/LoadingDataComponent";
 import {delay} from "../utils/time";
+import { DirectBuyItem, mapInstagramDataToDirectBuy, isDirectBuy } from "./DirectBuyMapper";
+import DirectBuyComponent from "../components/DirectBuyComponent";
 
 class DirectBuy extends Component {
 
@@ -21,12 +21,11 @@ class DirectBuy extends Component {
         directBuyItems: [] as DirectBuyItem[],
     };
 
-
     async componentDidMount() {
         this.doTimer();
         const items = (await getInstagramFeed()).filter(post => isDirectBuy(post)).map(mapInstagramDataToDirectBuy);
         this.setState({
-            directBuyData: items,
+            directBuyItems: items,
             isLoading: false,
         })
     }

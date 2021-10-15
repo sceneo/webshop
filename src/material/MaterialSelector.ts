@@ -3,15 +3,16 @@ import {isUndefined} from "../utils/Undefined";
 import {checkGalleryDataNotUndefined} from "../utils/NullChecker";
 
 const PREFIX = "material/";
-const SUFFIX = ".png";
+const SUFFIX = ".jpg";
 
 export const getFirstImageOrImageBackup = (input: GaleryData[] | undefined, materialType: string): string | undefined => {
-    if(isUndefined(input) || isUndefined(!(input) || input[0])){
         return getDefaultByMaterialType(materialType);
-    }
-    return checkGalleryDataNotUndefined(input)[0].img;
 }
 
 const getDefaultByMaterialType = (materialType: string): string => {
     return PREFIX + materialType + SUFFIX;
+}
+
+const isAvailable = (input: GaleryData): boolean => {
+    return false;
 }

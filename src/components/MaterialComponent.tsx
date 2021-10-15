@@ -100,7 +100,7 @@ export default function MaterialComponent(props: MaterialComponentProps) {
                                 <GridList>
                                     {checkGalleryDataNotUndefined(props.images).map(tile => (
                                         <GridListTile key={tile.img}>
-                                            <img className={"picture"} src={tile.img} alt={props.material.hashtag}/>
+                                            <img className={"picture"} src={"material/" + tile.img} alt={props.material.hashtag}/>
                                         </GridListTile>
                                     ))}
                                 </GridList>

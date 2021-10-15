@@ -4,11 +4,9 @@ import './App.css';
 import Menu from "./Menu";
 import BottomNavigationBar from "./bottomnavigation/BottomNavigationBar";
 import HeaderBar from "./headerbar/HeaderBar";
-import {refreshToken} from "./instagram/getInstagram";
 
 class App extends Component {
     render() {
-        refreshToken();
         return (
             <div className={'Background'}>
 
